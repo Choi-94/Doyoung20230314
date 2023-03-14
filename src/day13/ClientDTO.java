@@ -56,9 +56,7 @@ public class ClientDTO {
 	public String toString() {
 		String str = account+"\t"+id+"\t"+password+"\t"+name+"\t"+balance+"\t"+joinDate;
 		return str;
-	}
-	
-	
+	}		
 }
 
 
