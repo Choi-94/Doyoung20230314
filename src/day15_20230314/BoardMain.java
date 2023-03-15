@@ -1,6 +1,8 @@
-package day11;
+package day15_20230314;
 
 import java.util.Scanner;
+
+import day11.BoardService;
 
 public class BoardMain {
 
@@ -11,7 +13,7 @@ public class BoardMain {
 		
 		while(true) {
 			System.out.println("======계시판======");
-			System.out.println("1.게시판등록 2.리스트 3.읽기 4.수정 5.삭제 6.검색 0.종료");
+			System.out.println("1.게시판등록 2.리스트 3.읽기 4.수정 5.삭제.0.종료");
 			System.out.print("선택> ");
 			int menu = sc.nextInt();
 			
@@ -25,8 +27,6 @@ public class BoardMain {
 				service.update();
 			}else if(menu == 5) {
 				service.remove();
-			}else if(menu == 6) {
-				service.boardfinder();
 			}else if(menu == 0) {
 				break;
 			}else {
