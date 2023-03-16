@@ -1,5 +1,6 @@
 package day11;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap.KeySetView;
 public class BoardService {
 	BoardRepository br = new BoardRepository();
 	Scanner sc = new Scanner(System.in);
-
+	
 	
 	public void save() {
 		BoardDTO boardDTO = new BoardDTO();
@@ -19,6 +20,7 @@ public class BoardService {
 		boardDTO.setWriter(sc.next());
 		sc.nextLine();
 		String bno = boardDTO.getBno();
+		List<Map<String, BoardDTO>> board = new ArrayList<>();
 		boolean success = br.save(bno, boardDTO);
 		if(success) {
 			System.out.println("게시글 등록완료!");
