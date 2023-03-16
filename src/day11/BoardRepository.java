@@ -1,6 +1,5 @@
 package day11;
 
-import java.text.CollationKey;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -21,7 +20,7 @@ public class BoardRepository {
 
 	public Map<String, BoardDTO> findAll() {
 		List<String> keys = new ArrayList<>(map1.keySet());
-		Collections.sort(keys);
+		Collections.sort(keys);                                //Util클래스에 있음  부모가 가지고 있는 sort라는 메서드를 쓰고 있다
 		for (String key : keys) {
 			System.out.println(String.format("Key : %s, Value : %s", key, map1.get(key)));
 		}
@@ -67,9 +66,6 @@ public class BoardRepository {
 			if (map1.get(key).getWriter().equals(writer))
 				System.out.println(String.format("Key : %s, Value : %s", key, map1.get(key)));
 		}
-
 		return map1;
-
 	}
-
 }
