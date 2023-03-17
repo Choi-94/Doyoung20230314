@@ -1,5 +1,8 @@
 package day17_20230316;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -29,8 +32,15 @@ public class SchoolService {
 	}
 	public void studentlist() {
 		Map<String,SchoolDTO> map1 = studentrepository.studentlist();
-	
+		System.out.println("");
+		List<String> keys = new ArrayList<>(map1.keySet());
+		Collections.sort(keys);
+		for(String b : keys) {
+			System.out.println(map1.get(b));
+		}
 	}
+	
+	public void 
 	
 	
 	

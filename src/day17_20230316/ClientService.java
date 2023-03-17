@@ -2,13 +2,14 @@ package day17_20230316;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class ClientService {
-	private static ClientService service = new ClientService();
-	private ClientService() {}
+	private static ClientService service = new ClientService();      //싱글톤 패턴
+	private ClientService() {}                            //접근제한
 	public static ClientService getInstance() {
 		return service;
 	}
@@ -20,8 +21,22 @@ public class ClientService {
 	
 	public void save() {
 		ClientDTO clientDTO = new ClientDTO();
-		System.out.print("Id> ");
-		clientDTO.setId(sc.next());
+		while(true) {
+			System.out.print("Id> ");
+			clientDTO.setId(sc.next());
+			if(repository.idCheck(clientDTO.getId())) {
+				break;
+			}else {
+				System.out.println("중복된 아이디입니다 다시입력주세요 ");
+				System.out.println();
+			}
+//			if(repository.idCheck(clientDTO.getId()) {
+//				System.out.println("사용 가능한 아이디 입니다");
+//				break;
+//			}else{
+//				System.out.print("중본된 아이디입니다 다시 입력주세요> ");
+//			}
+		}
 		System.out.print("password");
 		clientDTO.setPassword(sc.next());
 		System.out.print("name> ");
@@ -68,17 +83,19 @@ public class ClientService {
 		}else {
 			System.out.println("계좌번호\t\t아이디\t아이디\t비밀번호\t예금주\t잔액\t가입일");
 			System.out.println("----------------------------------------------------------");
-			System.out.println(clientDTO.toString());
+			System.out.println(clientDTO);
 			System.out.println("-----------------------------------------------------------");
-			List<BreakdownDTO> bList = repository.breakList(clientDTO.getAccount());
-			if(bList.size() == 0 ) {
+			
+			Map<String, BreakdownDTO> map = repository.breaklist(clientDTO.getAccount());
+		
+			if(map.size() == 0 ) {
 				System.out.println("입출금 내역이 없습니다");
 			}else {
 				System.out.println("★입출금내역★");
 				System.out.println("-----------------------------------------------------------");
 				System.out.println("계좌번호\t구분\t거래금액\t거래후 잔액\t거래일");
-				for(BreakdownDTO b : bList) {
-					System.out.println(b.toString());
+				for(String key : map.keySet()) {
+					System.out.println(map.get(key));
 				}
 			}
 			

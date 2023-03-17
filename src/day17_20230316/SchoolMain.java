@@ -20,7 +20,7 @@ public class SchoolMain {
 			} else if (menu == 2) {
 				service.studentlist();
 			} else if (menu == 3) {
-
+				service.update();
 			} else if (menu == 4) {
 
 			} else if (menu == 5) {

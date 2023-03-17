@@ -6,7 +6,7 @@ public class ClientMain {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		ClientService service = ClientService.getInstance();
+		ClientService service = ClientService.getInstance();       //서비스 클래스 호출  (new사용 x)
 		boolean loginOk = false;
 		
 		while(true) {

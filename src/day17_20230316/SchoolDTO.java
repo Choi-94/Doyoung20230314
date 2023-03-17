@@ -60,16 +60,16 @@ public class SchoolDTO {
 		if(avg>=90) {
 			grade = 'A';			
 		}
-		if(avg>=80) {
+		else if(avg>=80) {
 			grade = 'B';
 		}
-		if(avg>=70) {
+		else if(avg>=70) {
 			grade = 'C';
 		}
-		if(avg>=60) {
+		else if(avg>=60) {
 			grade = 'D';
 		}
-		if(avg<60) {
+		else {
 			grade = 'F';
 		}
 	}
@@ -83,7 +83,7 @@ public class SchoolDTO {
 
 	@Override
 	public String toString() {
-		return "SchoolDTO [studentNumber=" + studentNumber + ", Kor=" + Kor + ", Eng=" + Eng + ", Mat=" + Mat
+		return "SchoolDTO [studentNumber=" + studentNumber + ", Kor=" + Kor + ", Eng=" + Eng + ", Mat=" + Mat +", Total="+total
 				+ ", grade=" + grade + ", avg=" + avg + "]";
 	}
 	

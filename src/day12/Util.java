@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Util {
 	static Scanner sc = new Scanner(System.in);
 	
-	public static int numberCheck() {
+	public static int numberCheck() {   //숫자만 입력체크
 		if(sc.hasNextInt()) {
 			return sc.nextInt();
 		}else {
@@ -17,7 +17,7 @@ public class Util {
 	public static String overlapCheck(List<UserDTO> list, String str) {
 		while(true) {
 			System.out.print(str+"> ");
-			String email = sc.next();
+			String email = sc.next();        //아이디 중복체크
 			boolean find = false;
 			for(UserDTO u : list) {
 				if(u.getEmail().equals(email+"@"+UserDTO.getDomain())) {

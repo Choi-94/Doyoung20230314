@@ -6,7 +6,9 @@ import java.time.format.DateTimeFormatter;
 
 public class BreakdownDTO {
 	private final static DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss");
+	private static int number = 0;
 	
+	private String anum;
 	private String account;
 	private String division;
 	private long dealMoney;
@@ -18,11 +20,20 @@ public class BreakdownDTO {
 	}
 	
 	public String getAccount() {
+		
 		return account;
 	}
 	public void setAccount(String account) {
 		this.account = account;
 	}
+	public String getAnum() {
+		return anum;
+	}
+
+	public void setAnum(String anum) {
+		this.anum = anum+number++;
+	}
+
 	public String getDivision() {
 		return division;
 	}
