@@ -7,6 +7,7 @@ public class BankDTO {
 	private final static DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yy/MM/dd  hh:mm:ss");
 	
 	private String name;
+	private String id;
 	private String password;
 	private String purpose;
 	private int balance;
@@ -26,6 +27,15 @@ public class BankDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public String getPassword() {
 		return password;
 	}

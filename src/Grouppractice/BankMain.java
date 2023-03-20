@@ -17,28 +17,28 @@ public class BankMain {
 
 				if (menu == 1) {
 					if(!loginOk) {
-						
+						service.save();
 					}else {
 						
 					}
 
 				} else if (menu == 2) {
 					if(!loginOk) {
-						
+						service.loginChk();
 					}else {
 						
 					}
 
 				} else if (menu == 3) {
 					if(!loginOk) {
-						
+						service.findAll();
 					}else {
 					
 					}
 
 				} else if (menu == 4) {
 					if(!loginOk) {
-						
+						service.findId();
 					}else {
 						
 					}
