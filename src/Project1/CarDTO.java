@@ -3,16 +3,18 @@ package Project1;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class CarDTO {
+import day19_20230320.ParentClass;
+
+public class CarDTO extends UserDTO {
 	//(받을것: 번호, 색상, 종류, 년식 ,판매가격)**차량고유식별 넘버는 자동적으로 등록
-	// * 한 아이디로 여러대를 등록가능 **조회수 cnt++
+	// * 한 아이디로 여러대를 등록가능 **조회수 cnt++           public class ChildClass extends ParentClass
 	
 	private final static DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss");
 	
-	private String CarNum;
-	private String Color;
-	private String Model;
-	private int Productionyear;
+	private String carNum;
+	private String color;
+	private String model;
+	private int productionyear;
 	private int price;
 	private String regoDate;
 	
@@ -22,35 +24,35 @@ public class CarDTO {
 	}
 
 	public String getCarNum() {
-		return CarNum;
+		return carNum;
 	}
 
 	public void setCarNum(String carNum) {
-		CarNum = carNum;
+		this.carNum = carNum;
 	}
 
 	public String getColor() {
-		return Color;
+		return color;
 	}
 
 	public void setColor(String color) {
-		Color = color;
+		this.color = color;
 	}
 
 	public String getModel() {
-		return Model;
+		return model;
 	}
 
 	public void setModel(String model) {
-		Model = model;
+		this.model = model;
 	}
 
 	public String getProductionyear() {
-		return Productionyear+"년식";
+		return productionyear+"년식";
 	}
 
 	public void setProductionyear(int productionyear) {
-		Productionyear = productionyear;
+		this.productionyear = productionyear;
 	}
 
 	public int getPrice() {
@@ -63,8 +65,8 @@ public class CarDTO {
 
 	@Override
 	public String toString() {
-		return "CarDTO [CarNum=" + CarNum + ", Model=" + Model + ", Productionyear=" + Productionyear + ", Color="
-				+ Color + ", price=" + price + ", regoDate=" + regoDate + "]";
+		return "CarDTO [CarNum=" + carNum + ", Model=" + model + ", Productionyear=" + productionyear + ", Color="
+				+ color + ", price=" + price + ", regoDate=" + regoDate + "]";
 	}
 	
 }

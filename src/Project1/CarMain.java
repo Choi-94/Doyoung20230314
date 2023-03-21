@@ -6,61 +6,64 @@ public class CarMain {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		CarService carservice = new CarService();
+		CarService carservice = CarService.getInstance();
 		boolean loginOk = false;
 
-		System.out.println("==================●도영중고차●==================");
-		System.out.println("1.회원가입 2.로그인 3.회원리스트");
-		System.out.println(
-				"1.차량등록 2.검색하신 닉네임으로 등록된 차량확인 3.등록한 차량 게시물 삭제 4.등록된 차량 게시물 수정 5.전체 중고차 리스트 6.회원탈퇴 7.로그아웃 0.종료");
-		int menu = sc.nextInt();
 		while (true) {
+			System.out.println("==================●도영중고차●==================");
+			if(loginOk) {
+				System.out.println("1.차량등록 2.검색하신 닉네임으로 등록된 차량확인 3.등록한 차량 게시물 삭제 4.등록된 차량 게시물 수정 5.전체 중고차 리스트 6.회원탈퇴 7.로그아웃 0.종료");
+			} else {
+				System.out.println("1.회원가입 2.로그인 3.회원리스트");
+			}
+			System.out.print("선택> ");
+			int menu = sc.nextInt();
 
 			if (menu == 1) {
-				if(!loginOk) {
-					carservice.save();
-				}else {
+				if (loginOk) {
 					carservice.carsave();
+				} else {
+					carservice.save();
 				}
 			} else if (menu == 2) {
-				if(!loginOk) {
-					carservice.loginchk();
-				}else {
+				if (loginOk) {
 					carservice.carfindnick();
+				} else {
+					loginOk = carservice.loginCheck(); 
 				}
 			} else if (menu == 3) {
-				if(!loginOk) {
-					carservice.findall();
-				}else {
-					carservice.cardelete();
+				if (loginOk) {
+
+				} else {
+					carservice.findall();      //개인정보 보호 ( 닉네임 가입일 회원번호만 보이게)
 				}
 			} else if (menu == 4) {
-				if(!loginOk) {
+				if (loginOk) {
+					
+				} else {
 					System.out.println("존재하지 않는 번호입니다");
-					continue;				
-				}else {
-					carservice.carupdate();
+					continue;
 				}
 			} else if (menu == 5) {
-				if(!loginOk) {
+				if (loginOk) {
+					
+				} else {
 					System.out.println("존재하지 않는 번호입니다");
-					continue;	
-				}else {
-					carservice.carfindall();
+					continue;
 				}
 			} else if (menu == 6) {
-				if(!loginOk) {
+				if (loginOk) {
+					
+				} else {
 					System.out.println("존재하지 않는 번호입니다");
 					continue;
-				}else {
-					carservice.idremove();
 				}
 			} else if (menu == 7) {
-				if(!loginOk) {
+				if (loginOk) {
+					
+				} else {
 					System.out.println("존재하지 않는 번호입니다");
 					continue;
-				}else {
-					carservice.logout();
 				}
 			} else if (menu == 0) {
 				break;

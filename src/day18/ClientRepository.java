@@ -25,7 +25,6 @@ public class ClientRepository {
 		} else {
 			return false;
 		}
-		
 	}
 	
 	public Map<String, ClientDTO> findAll() {	
