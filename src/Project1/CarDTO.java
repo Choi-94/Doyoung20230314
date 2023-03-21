@@ -14,7 +14,7 @@ public class CarDTO extends UserDTO {
 	private String carNum;
 	private String color;
 	private String model;
-	private int productionyear;
+	private String productionyear;
 	private int price;
 	private String regoDate;
 	
@@ -48,11 +48,11 @@ public class CarDTO extends UserDTO {
 	}
 
 	public String getProductionyear() {
-		return productionyear+"년식";
+		return productionyear;
 	}
 
 	public void setProductionyear(int productionyear) {
-		this.productionyear = productionyear;
+		this.productionyear = productionyear+"년식";
 	}
 
 	public int getPrice() {
@@ -66,7 +66,7 @@ public class CarDTO extends UserDTO {
 	@Override
 	public String toString() {
 		return "CarDTO [CarNum=" + carNum + ", Model=" + model + ", Productionyear=" + productionyear + ", Color="
-				+ color + ", price=" + price + ", regoDate=" + regoDate + "]";
+				+ color + ", price=" + price + ", regoDate=" + regoDate + "]"+"\n";
 	}
 	
 }

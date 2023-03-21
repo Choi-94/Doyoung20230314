@@ -10,6 +10,7 @@ public class CarMain {
 		boolean loginOk = false;
 
 		while (true) {
+			System.out.println();
 			System.out.println("==================●도영중고차●==================");
 			if(loginOk) {
 				System.out.println("1.차량등록 2.검색하신 닉네임으로 등록된 차량확인 3.등록한 차량 게시물 삭제 4.등록된 차량 게시물 수정 5.전체 중고차 리스트 6.회원탈퇴 7.로그아웃 0.종료");
@@ -33,7 +34,7 @@ public class CarMain {
 				}
 			} else if (menu == 3) {
 				if (loginOk) {
-
+					carservice.cardelete();
 				} else {
 					carservice.findall();      //개인정보 보호 ( 닉네임 가입일 회원번호만 보이게)
 				}

@@ -58,28 +58,29 @@ public class CarRepository {
 		}
 	}
 	
-	public boolean nickcheck(String nickname) {
-		if(usermap.get(nickname).equals(nickname)) {
-			return true;
-		}else {
-			return false;
-		}
+	public boolean nickcheck(String nick) {
+		for(String key : usermap.keySet()) {
+			if(nick.equals(usermap.get(key).getNickname())){
+				return true;
+			}
+		}return false;
 	}
 	
 	
-	public List<CarDTO> breakList(String nickname) {
+	public List<CarDTO> breakList(String nick) {
+		
 		List<CarDTO> list = new ArrayList<>();
-	
-		for(CarDTO c: CList) {
-			if(nickname.equals(usermap.get(c).getNickname())) {
-				list.add(c);
+		for(String key : usermap.keySet()) {
+			if(nick.equals(usermap.get(key).getNickname())) {
+				for(CarDTO c : CList) {
+					list.add(c);
+				}
 			}
 		}
 		return list;
 	}
+	
 
-	
-	
 	
 	
 	public boolean checkId(String id) {

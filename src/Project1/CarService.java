@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import day18.BreakdownDTO;
-import day18.ClientDTO;
+
+
+
 
 public class CarService {
 	private static CarService service = new CarService();
@@ -22,10 +23,14 @@ public class CarService {
 	private CarRepository repository = CarRepository.getInstance();
 	private String loginId = null;
 	private String loginPassword = null;
+	private String loginNickname = null;
 
 	public void carsave() {
 		if(loginId != null && loginPassword != null) {
 			CarDTO carDTO = new CarDTO();
+			carDTO.setId(loginId);
+			carDTO.setPassword(loginPassword);
+			carDTO.setNickname(loginId);
 			System.out.print("자동차 번호를 입력하세요> ");
 			carDTO.setCarNum(sc.next());
 			System.out.print("자동차 색상을 적어주세요> ");
@@ -33,10 +38,9 @@ public class CarService {
 			System.out.print("차종을 입력하세요 ex) 아반떼, 소나타, K5 등> ");
 			carDTO.setModel(sc.next());
 			System.out.print("판매하시는 자동차의 년식의 숫자를 적어주세요 ex) 2002 , 2013 등> ");
-			carDTO.setPrice(sc.nextInt());
+			carDTO.setProductionyear(sc.nextInt());
 			System.out.print("원하시는 판매금액을 입력하세요> ");
 			carDTO.setPrice(sc.nextInt());
-			
 			if(repository.carsave(carDTO)) {
 				System.out.println("차 등록 성공");
 			}else {
@@ -91,17 +95,22 @@ public class CarService {
 	}
 	
 	public void carfindnick() {
+		
 		System.out.print("검색하실 닉네임을 입력하세요> ");
 		String nick = sc.next();
+
 		List<CarDTO> cList = repository.breakList(nick);
 		if(repository.nickcheck(nick)) {
 			if(cList.size() == 0) {
 				System.out.println("등로된 차가 없습니다");
+				
 			}else {
+				System.out.println("\t\t차번호\t차종\t\t\t년식\t색상\t가격");
 				System.out.println(cList);
 			}
 		}else {
 			System.out.println("없는 닉네임입니다");
+			
 		}
 		
 	}
@@ -116,7 +125,6 @@ public class CarService {
 			loginId = id;
 			loginPassword = password;
 			System.out.println("로그인성공");
-			
 			return true;
 		} else {
 			System.out.println("로그인실패");
