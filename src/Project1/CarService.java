@@ -19,8 +19,10 @@ public class CarService {
 	private CarRepository repository = CarRepository.getInstance();
 	private String loginId = null;
 	private String loginPassword = null;
-	private String loginNickname = null;
-
+	
+	
+	
+	
 	public void carsave() {
 		if (loginId != null && loginPassword != null) {
 			CarDTO carDTO = new CarDTO();
@@ -36,7 +38,7 @@ public class CarService {
 			carDTO.setProductionyear(sc.nextInt());
 			System.out.print("원하시는 판매금액을 입력하세요> ");
 			carDTO.setPrice(sc.nextInt());
-			if (repository.carsave(carDTO)) {
+			if (repository.carsave(carDTO,loginId,loginPassword)) {
 				System.out.println("차 등록 성공");
 			} else {
 				System.out.println("차 등록 실패");
@@ -89,20 +91,16 @@ public class CarService {
 	}
 
 	public void carfindnick() {
-		System.out.print("검색하실 닉네임을 입력하세요> ");
-		String nick = sc.next();
-		List<CarDTO> cList = repository.breakList(nick);
-		if (repository.nickcheck(nick)) {
-			if (cList.size() == 0) {
-				System.out.println("등로된 차가 없습니다");
+		System.out.print("검색하실 차종을 입력하세요> ");
+		String model = sc.next();
+		List<CarDTO> cList = repository.breakList(model);
+			if (repository.breakList(model).size() == 0) {
+				System.out.println("등로된 차종이 없습니다");
 
 			} else {
-				System.out.println("\t\t글번호\t차번호\t차종\t\t\t년식\t색상\t가격");
+				System.out.println("\t\t글번호\t차번호\t차종\t\t년식\t색상\t가격");
 				System.out.println(cList);
 			}
-		} else {
-			System.out.println("없는 닉네임입니다");
-		}
 	}
 
 	public void cardelete() {
@@ -187,8 +185,22 @@ public class CarService {
 	}
 
 	public void carevent() {
-		repository.carevent(loginPassword, loginId);
+		
+		System.out.print("| ");
 
-	}
+		double randombox;
+		
+			randombox = (int) (Math.random() * (100 - 1 + 1) + 1);
 
+			if (1 <= randombox && randombox <= 3) {
+				System.out.print("**키링**");
+			} else if (4 <= randombox && randombox <= 13) {
+				System.out.print("*커피기프티콘*");
+			} else {
+				System.out.print("꽝");
+			}
+			System.out.print(" | ");
+		}
+	
 }
+

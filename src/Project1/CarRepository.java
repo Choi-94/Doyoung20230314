@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import day18.BreakdownDTO;
+
 public class CarRepository {
 	private static CarRepository repository = new CarRepository();
 
@@ -34,7 +36,7 @@ public class CarRepository {
 		}
 	}
 
-	private String userCheck(String id, String password) {
+	public String userCheck(String id, String password) {
 		for (String key : usermap.keySet()) {
 			if (id.equals(usermap.get(key).getId()) && password.equals(usermap.get(key).getPassword())) {
 				return key;
@@ -46,43 +48,55 @@ public class CarRepository {
 	public Map<String, UserDTO> findall() {
 		return usermap;
 	}
-	
-	public List<CarDTO> carall(){
-		if(CList.size() == 0) {
+
+	public List<CarDTO> carall() {
+		if (CList.size() == 0) {
 			return null;
-		}else {
-			
+		} else {
+
 		}
 		return CList;
-		
 	}
-
-	public boolean carsave(CarDTO carDTO) {
-		
-		if (CList.add(carDTO)) {
-			return true;
-		} else {
-			return false;
+	public void carevent(String loginId) {	
+		for(String key : usermap.keySet()) {
+			if(loginId.equals(usermap.get(key).getId())) {
+				 {
+					
+				}
+			}
 		}
-	}
+		System.out.print("| ");
 
-	public boolean nickcheck(String nick) {
+		double randombox;
+		
+			randombox = (int) (Math.random() * (100 - 1 + 1) + 1);
+
+			if (1 <= randombox && randombox <= 3) {
+				System.out.print("**키링**");
+			} else if (4 <= randombox && randombox <= 13) {
+				System.out.print("*커피기프티콘*");
+			} else {
+				System.out.print("꽝");
+			}
+			System.out.print(" | ");
+		}
+
+	public boolean carsave(CarDTO carDTO, String loginId, String Password) {
 		for (String key : usermap.keySet()) {
-			if (nick.equals(usermap.get(key).getNickname())) {
-				return true;
+			if (loginId.equals(usermap.get(key).getId()) && Password.equals(usermap.get(key).getPassword())) {
+				if (CList.add(carDTO)) {
+					return true;
+				}
 			}
 		}
 		return false;
 	}
 
-	public List<CarDTO> breakList(String nick) {
-
+	public List<CarDTO> breakList(String model) {
 		List<CarDTO> list = new ArrayList<>();
-		for (String key : usermap.keySet()) {
-			if (nick.equals(usermap.get(key).getNickname())) {
-				for (CarDTO c : CList) {
-					list.add(c);
-				}
+		for (CarDTO c : CList) {
+			if (c.getModel().equals(model)) {
+				list.add(c);
 			}
 		}
 		return list;
@@ -92,7 +106,7 @@ public class CarRepository {
 		for (String key : usermap.keySet()) {
 			if (loginPassword.equals(usermap.get(key).getPassword()) && loginId.equals(usermap.get(key).getId())) {
 				for (CarDTO c : CList) {
-					if(c.getBno().equals(deletebno)) {
+					if (c.getBno().equals(deletebno)) {
 						CList.remove(c);
 						return true;
 					}
@@ -139,7 +153,6 @@ public class CarRepository {
 						c.setModel(carDTO.getModel());
 						c.setProductionyear(carDTO.getProductionyear());
 						c.setPrice(carDTO.getPrice());
-						CarDTO.event = CarDTO.getEvent() - 1;
 						return true;
 					}
 
@@ -149,31 +162,4 @@ public class CarRepository {
 		return false;
 	}
 
-	public void carevent(String password, String loginTd) {
-		for (String key : usermap.keySet()) {
-			if (password.equals(usermap.get(key).getPassword()) && loginTd.equals(usermap.get(key).getId())) {
-
-				int numevent = CarDTO.getEvent();
-				if (CarDTO.getEvent() >= 5) {
-					CarDTO.event = CarDTO.getEvent() - 5;
-					System.out.println("과연 두근두근두근");
-					System.out.print("| ");
-					double randombox;
-					randombox = (int) (Math.random() * (100 - 1 + 1) + 1);
-
-					if (1 <= randombox && randombox <= 3) {
-						System.out.print("**키링**");
-					} else if (4 <= randombox && randombox <= 13) {
-						System.out.print("*커피기프티콘*");
-					} else {
-						System.out.print("꽝");
-					}
-					System.out.print(" | ");
-
-				} else {
-					System.out.println(numevent + "점입니다 포인트 획득을 위해 화이팅!");
-				}
-			}
-		}
-	}
 }

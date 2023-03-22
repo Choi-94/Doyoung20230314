@@ -20,12 +20,12 @@ public class CarDTO extends UserDTO {
 	private int productionyear;
 	private int price;
 	private String regoDate;
-	static int event;
-
+	private int event;
+	
 	
 	public CarDTO() {
 		this.regoDate = DTF.format(LocalDateTime.now());
-		event = ++number;
+		this.event = event+ ++number;
 		this.bno = "Car"+bnonumber++;
 	}
 
@@ -73,7 +73,7 @@ public class CarDTO extends UserDTO {
 		this.price = price;
 	}
 	
-	static int getEvent() {
+	public int getEvent() {
 		return event;
 	}
 	@Override
