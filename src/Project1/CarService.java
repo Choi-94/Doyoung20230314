@@ -4,10 +4,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-
-
-
-
 public class CarService {
 	private static CarService service = new CarService();
 
@@ -26,11 +22,10 @@ public class CarService {
 	private String loginNickname = null;
 
 	public void carsave() {
-		if(loginId != null && loginPassword != null) {
+		if (loginId != null && loginPassword != null) {
 			CarDTO carDTO = new CarDTO();
 			carDTO.setId(loginId);
 			carDTO.setPassword(loginPassword);
-			carDTO.setNickname(loginId);
 			System.out.print("자동차 번호를 입력하세요> ");
 			carDTO.setCarNum(sc.next());
 			System.out.print("자동차 색상을 적어주세요> ");
@@ -41,17 +36,16 @@ public class CarService {
 			carDTO.setProductionyear(sc.nextInt());
 			System.out.print("원하시는 판매금액을 입력하세요> ");
 			carDTO.setPrice(sc.nextInt());
-			if(repository.carsave(carDTO)) {
+			if (repository.carsave(carDTO)) {
 				System.out.println("차 등록 성공");
-			}else {
+			} else {
 				System.out.println("차 등록 실패");
 			}
-		}else {
+		} else {
 			System.out.println("로그인 확인 필요");
 		}
-		
 	}
-	
+
 	public void save() {
 		UserDTO userDTO = new UserDTO();
 		boolean checkResult = true;
@@ -86,33 +80,40 @@ public class CarService {
 		} while (NickResult);
 
 		userDTO.setNickname(nick);
-
+		System.out.println(userDTO);
 		if (repository.save(userDTO)) {
 			System.out.println("회원가입성공");
 		} else {
 			System.out.println("회원가입실패");
 		}
 	}
-	
+
 	public void carfindnick() {
-		
 		System.out.print("검색하실 닉네임을 입력하세요> ");
 		String nick = sc.next();
-
 		List<CarDTO> cList = repository.breakList(nick);
-		if(repository.nickcheck(nick)) {
-			if(cList.size() == 0) {
+		if (repository.nickcheck(nick)) {
+			if (cList.size() == 0) {
 				System.out.println("등로된 차가 없습니다");
-				
-			}else {
-				System.out.println("\t\t차번호\t차종\t\t\t년식\t색상\t가격");
+
+			} else {
+				System.out.println("\t\t글번호\t차번호\t차종\t\t\t년식\t색상\t가격");
 				System.out.println(cList);
 			}
-		}else {
+		} else {
 			System.out.println("없는 닉네임입니다");
-			
 		}
+	}
+
+	public void cardelete() {
 		
+		System.out.println("삭제 하실 글번호를 입력하세요> ");
+		String deletebno = sc.next();
+		if (repository.cardelete(loginPassword, loginId, deletebno)) {
+			System.out.println("게시물 삭제가 완료되었습니다");
+		} else {
+			System.out.println("게시물 삭제가 실패하였습니다");
+		}
 	}
 
 	public boolean loginCheck() {
@@ -131,14 +132,63 @@ public class CarService {
 			return false;
 		}
 	}
+	public void carall() {
+		List<CarDTO> CList = repository.carall();
+		if(repository.carall() == null) {
+			System.out.println("등록된 중고차가 없습니다");
+		}else {
+			System.out.println(CList);
+			}
+		}
+	
+
 	public void findall() {
 		Map<String, UserDTO> usermap = repository.findall();
-		System.out.println("\t\t회원번호\t이름\t닉네임\t가입일");                               //return "CarDTO [CarNum=" + carNum + ", Model=" + model + ", Productionyear=" + productionyear + ", Color="
-																								//+ color + ", price=" + price + ", regoDate=" + regoDate + "]";
+		System.out.println("\t\t회원번호\t이름\t닉네임\t가입일"); // return "CarDTO [CarNum=" + carNum + ", Model=" + model + ",
+														// Productionyear=" + productionyear + ", Color="
+														// + color + ", price=" + price + ", regoDate=" + regoDate +
+														// "]";
 		System.out.println("-------------------------------------------------------");
 		for (String key : usermap.keySet()) {
 			System.out.println(usermap.get(key).toString());
 		}
+	}
+
+	public void carupdate() {
+		System.out.print("수정하실 글번호를 입력해주세요> ");
+		String bnonum = sc.next();
+		CarDTO c = repository.findBybno(bnonum);
+		if (c == null) {
+			System.out.println("조회할 수 없는 글번호 입니다");
+		} else {
+			CarDTO carDTO = new CarDTO();
+			System.out.print("자동차 번호를 수정해주세요> ");
+			carDTO.setCarNum(sc.next());
+			System.out.print("자동차 색상을 수정해주세요> ");
+			carDTO.setColor(sc.next());
+			System.out.print("차종을 수정해주세요> ");
+			carDTO.setModel(sc.next());
+			System.out.print("년식을 수정해주세요> ");
+			carDTO.setProductionyear(sc.nextInt());
+			System.out.print("판매금액을 수정해주세요> ");
+			carDTO.setPrice(sc.nextInt());
+			if(repository.carupdate(loginPassword, loginId, bnonum, carDTO)) {
+				System.out.println("수정 완료");
+			}else {
+				System.out.println("수정 실패");
+			}
+		}
+
+	}
+	public void logout() {
+		loginId = null;
+		loginPassword = null;
+		System.out.println("로그아웃");
+	}
+
+	public void carevent() {
+		repository.carevent(loginPassword, loginId);
+
 	}
 
 }

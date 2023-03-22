@@ -10,17 +10,27 @@ public class CarDTO extends UserDTO {
 	// * 한 아이디로 여러대를 등록가능 **조회수 cnt++           public class ChildClass extends ParentClass
 	
 	private final static DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss");
+	private static int number = 0;
+	private static int bnonumber = 1000;
 	
+	private String bno;
 	private String carNum;
 	private String color;
 	private String model;
-	private String productionyear;
+	private int productionyear;
 	private int price;
 	private String regoDate;
-	
+	static int event;
+
 	
 	public CarDTO() {
 		this.regoDate = DTF.format(LocalDateTime.now());
+		event = ++number;
+		this.bno = "Car"+bnonumber++;
+	}
+
+	public String getBno() {
+		return bno;
 	}
 
 	public String getCarNum() {
@@ -47,12 +57,12 @@ public class CarDTO extends UserDTO {
 		this.model = model;
 	}
 
-	public String getProductionyear() {
+	public int getProductionyear() {
 		return productionyear;
 	}
 
 	public void setProductionyear(int productionyear) {
-		this.productionyear = productionyear+"년식";
+		this.productionyear = productionyear;
 	}
 
 	public int getPrice() {
@@ -62,10 +72,13 @@ public class CarDTO extends UserDTO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
+	
+	static int getEvent() {
+		return event;
+	}
 	@Override
 	public String toString() {
-		return "CarDTO [CarNum=" + carNum + ", Model=" + model + ", Productionyear=" + productionyear + ", Color="
+		return "CarDTO [NickName="+getNickname()+"CarBno="+ bno + ",CarNum=" + carNum + ", Model=" + model + ", Productionyear=" + productionyear+"년식" + ", Color="
 				+ color + ", price=" + price + ", regoDate=" + regoDate + "]"+"\n";
 	}
 	

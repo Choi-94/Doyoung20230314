@@ -7,12 +7,14 @@ public class UserDTO {
 	private final static DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss");
 	private static int Number = 100;
 	
+	
 	private String uno;
 	private String id;
 	private String password;
 	private String name;
 	private String nickname;
 	private String joinDate;
+	
 	
 	
 	public UserDTO() {
@@ -51,10 +53,9 @@ public class UserDTO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "UserDTO [uno=" + uno + ", name=" + name + ", nickname=" + nickname + ", joinDate=" + joinDate + "]";
 	}
-		
 }
