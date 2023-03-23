@@ -7,6 +7,7 @@ public class CarMain {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		CarService carservice = CarService.getInstance();
+		CounselingService counselingservice = CounselingService.getInstance();
 		boolean loginOk = false;
 
 		while (true) {
@@ -16,7 +17,7 @@ public class CarMain {
 				System.out.println(
 						"1.차량등록 2.원하는 차종으로 등록된 차량확인 3.등록된 차량 게시물 수정 4.등록한 차량 게시물 삭제  5.전체 중고차 리스트 6.로그아웃 7.회원탈퇴 8.회원가입 이벤트 0.종료");
 			} else {
-				System.out.println("1.회원가입 2.로그인 3.회원리스트");
+				System.out.println("1.회원가입 2.로그인 3.회원리스트 4.상담신청");
 			}
 			System.out.print("선택> ");
 			int menu = sc.nextInt();
@@ -44,8 +45,7 @@ public class CarMain {
 				if (loginOk) {
 					carservice.cardelete();
 				} else {
-					System.out.println("존재하지 않는 번호입니다");
-					continue;
+					counselingservice.Counselingsave();
 				}
 			} else if (menu == 5) {
 				if (loginOk) {
