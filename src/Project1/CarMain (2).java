@@ -14,7 +14,7 @@ public class CarMain {
 			System.out.println("==================●도영중고차●==================");
 			if (loginOk) {
 				System.out.println(
-						"1.차량등록 2.원하는 차종으로 등록된 차량확인 3.등록된 차량 게시물 수정 4.등록한 차량 게시물 삭제  5.전체 중고차 리스트 6.로그아웃 7.회원탈퇴 8.회원가입 이벤트 0.종료");
+						"1.차량등록 2.원하는 차종으로 등록된 차량확인 3.등록된 차량 게시물 수정 4.등록한 차량 게시물 삭제  5.전체 중고차 리스트 6.회원탈퇴 7.로그아웃 8.이벤트 0.종료");
 			} else {
 				System.out.println("1.회원가입 2.로그인 3.회원리스트");
 			}
@@ -56,14 +56,14 @@ public class CarMain {
 				}
 			} else if (menu == 6) {
 				if (loginOk) {
-					carservice.logout();
+					loginOk = carservice.delete();
 				} else {
 					System.out.println("존재하지 않는 번호입니다");
 					continue;
 				}
 			} else if (menu == 7) {
 				if (loginOk) {
-					loginOk = carservice.delete();
+					carservice.logout();
 					loginOk = false;
 				} else {
 					System.out.println("존재하지 않는 번호입니다");

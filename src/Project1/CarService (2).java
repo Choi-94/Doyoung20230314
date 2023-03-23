@@ -11,7 +11,6 @@ public class CarService {
 	private CarService() {
 
 	}
-
 	public static CarService getInstance() {
 		return service;
 	}
@@ -38,6 +37,7 @@ public class CarService {
 			if (repository.carsave(carDTO, loginId, loginPassword)) {
 				System.out.println("차 등록 성공");
 				System.out.println();
+
 			} else {
 				System.out.println("차 등록 실패");
 			}
@@ -62,6 +62,7 @@ public class CarService {
 				System.out.println("이미 사용중인 id 입니다.");
 			}
 		} while (checkResult);
+
 		userDTO.setId(id);
 		System.out.print("password> ");
 		userDTO.setPassword(sc.next());
@@ -79,6 +80,7 @@ public class CarService {
 		} while (NickResult);
 
 		userDTO.setNickname(nick);
+		System.out.println(userDTO);
 		if (repository.save(userDTO)) {
 			System.out.println("회원가입성공");
 			result = true;
@@ -93,6 +95,7 @@ public class CarService {
 		List<CarDTO> cList = repository.breakList(model);
 		if (repository.breakList(model).size() == 0) {
 			System.out.println("등록된 차종이 없습니다");
+
 		} else {
 			System.out.println("\t\t글번호\t차번호\t차종\t\t년식\t색상\t가격");
 			System.out.println(cList);
@@ -100,6 +103,7 @@ public class CarService {
 	}
 
 	public void cardelete() {
+
 		System.out.println("삭제 하실 글번호를 입력하세요> ");
 		String deletebno = sc.next();
 		if (repository.cardelete(loginPassword, loginId, deletebno)) {
@@ -179,43 +183,34 @@ public class CarService {
 		loginPassword = null;
 		System.out.println("로그아웃");
 	}
-
+	
 	public boolean delete() {
-		if (repository.delete(loginId, loginPassword)) {
+		if(repository.delete(loginId, loginPassword)) {
 			System.out.println("삭제 성공");
 			return false;
-		} else {
+		}else {
 			System.out.println("삭제 실패");
 			return true;
 		}
 	}
-
+	
 	public void carevent() {
 		if (result) {
 			System.out.println("회원 가입 시 한 번 이용가능");
 			System.out.print("| ");
 			double randombox;
-			for (int i = 1; i <= 9; i++) {
-				randombox = (int) (Math.random() * (100 - 1 + 1) + 1);
-				if (1 <= randombox && randombox <= 1) {
-					System.out.print("**자동차 키링**");
-				} else if (2 <= randombox && randombox <= 3) {
-					System.out.print("*스타벅스 텀블러*");
-				} else if (4 <= randombox && randombox <= 7) {
-					System.out.print("*스타벅스 커피*");
-				} else {
-					System.out.print("꽝");
-				}
-				System.out.print(" | ");
-			}
 			randombox = (int) (Math.random() * (100 - 1 + 1) + 1);
-			if (1 <= randombox && randombox <= 5)
-				System.out.print("**스타벅스 텀블러**");
-			else if (6 <= randombox && randombox <= 100)
-				System.out.print("*스타벅스 커피*");
-			System.out.print(" |");
+
+			if (1 <= randombox && randombox <= 3) {
+				System.out.print("**키링**");
+			} else if (4 <= randombox && randombox <= 13) {
+				System.out.print("*커피기프티콘*");
+			} else {
+				System.out.print("꽝");
+			}
+			System.out.print(" | ");
 			result = false;
-		} else {
+		}else {
 			System.out.println("ㅠㅠ 다음 이벤트를 참여해주세요");
 		}
 	}
