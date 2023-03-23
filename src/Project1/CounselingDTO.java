@@ -8,11 +8,12 @@ public class CounselingDTO {
 	private String name;
 	private String phone;
 	private String date;
+	private String joindate;
 	
 	private final static DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss");
 	
 	public CounselingDTO() {
-		this.date = DTF.format(LocalDateTime.now());
+		this.joindate = DTF.format(LocalDateTime.now());
 	}
 	
 	public String getName() {
@@ -36,7 +37,8 @@ public class CounselingDTO {
 
 	@Override
 	public String toString() {
-		return "CounselingDTO [name=" + name + ", phone=" + phone + ", date=" + date + "]";
-	}	
+		return "CounselingDTO [name=" + name + ", phone=" + phone + ", date=" + date + ", joindate=" + joindate + "]";
+	}
+
 	
 }

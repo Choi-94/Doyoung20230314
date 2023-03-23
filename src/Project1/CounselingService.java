@@ -1,5 +1,6 @@
 package Project1;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class CounselingService {
@@ -30,6 +31,13 @@ public class CounselingService {
 		}else{
 			System.out.println("죄송합니다 다시 상담신청 부탁드립니다");
 		}
+	}
+	
+	public void Counselingfind() {
+		List<CounselingDTO> list = Corepository.Counselingfind();
+		System.out.println("\t\t이름\t\t폰번호\t\t신청한시간");
+		System.out.println("----------------------------------");
+		System.out.println(list.toString());
 	}
 	
 }

@@ -22,4 +22,7 @@ public class CounselingRepository {
 		return a;
 	}
 
+	public List<CounselingDTO> Counselingfind(){
+		return list;
+	}
 }

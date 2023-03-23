@@ -137,10 +137,7 @@ public class CarService {
 
 	public void findall() {
 		Map<String, UserDTO> usermap = repository.findall();
-		System.out.println("\t\t회원번호\t이름\t닉네임\t가입일"); // return "CarDTO [CarNum=" + carNum + ", Model=" + model + ",
-														// Productionyear=" + productionyear + ", Color="
-														// + color + ", price=" + price + ", regoDate=" + regoDate +
-														// "]";
+		System.out.println("\t회원번호\t아이디\t\t비밀번호\t이름\t\t닉네임\t가입일"); // return "CarDTO [CarNum=" + carNum + ", Model=" + model + ",													// Productionyear=" + productionyear + ", Color="														// + color + ", price=" + price + ", regoDate=" + regoDate +														// "]";
 		System.out.println("-------------------------------------------------------");
 		for (String key : usermap.keySet()) {
 			System.out.println(usermap.get(key).toString());

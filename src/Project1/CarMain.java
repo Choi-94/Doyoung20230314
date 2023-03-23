@@ -17,11 +17,11 @@ public class CarMain {
 				System.out.println(
 						"1.차량등록 2.원하는 차종으로 등록된 차량확인 3.등록된 차량 게시물 수정 4.등록한 차량 게시물 삭제  5.전체 중고차 리스트 6.로그아웃 7.회원탈퇴 8.회원가입 이벤트 0.종료");
 			} else {
-				System.out.println("1.회원가입 2.로그인 3.회원리스트 4.상담신청");
+				System.out.println("");
+				System.out.println("1.회원가입 2.로그인 3.상담신청 4.관리자");
 			}
 			System.out.print("선택> ");
 			int menu = sc.nextInt();
-			
 
 			if (menu == 1) {
 				if (loginOk) {
@@ -39,13 +39,13 @@ public class CarMain {
 				if (loginOk) {
 					carservice.carupdate();
 				} else {
-					carservice.findall(); // 개인정보 보호 ( 닉네임 가입일 회원번호만 보이게)
+					counselingservice.Counselingsave(); // 개인정보 보호 ( 닉네임 가입일 회원번호만 보이게)
 				}
 			} else if (menu == 4) {
 				if (loginOk) {
 					carservice.cardelete();
 				} else {
-					counselingservice.Counselingsave();
+					ControlMain.main(args);
 				}
 			} else if (menu == 5) {
 				if (loginOk) {
@@ -57,6 +57,7 @@ public class CarMain {
 			} else if (menu == 6) {
 				if (loginOk) {
 					carservice.logout();
+					loginOk = false;
 				} else {
 					System.out.println("존재하지 않는 번호입니다");
 					continue;
@@ -70,10 +71,10 @@ public class CarMain {
 					continue;
 				}
 			} else if (menu == 8) {
-				if(loginOk) {
+				if (loginOk) {
 					carservice.carevent();
 				}
-			} else if (menu == 0){
+			} else if (menu == 0) {
 				break;
 			} else {
 				System.out.println("잘못된 번호 입니다");
