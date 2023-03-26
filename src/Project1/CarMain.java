@@ -22,6 +22,7 @@ public class CarMain {
 			}
 			System.out.print("선택> ");
 			int menu = sc.nextInt();
+		
 
 			if (menu == 1) {
 				if (loginOk) {

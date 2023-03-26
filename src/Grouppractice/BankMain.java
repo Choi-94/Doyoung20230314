@@ -1,5 +1,6 @@
 package Grouppractice;
 
+import java.security.Provider.Service;
 import java.util.Scanner;
 
 public class BankMain {
@@ -7,6 +8,8 @@ public class BankMain {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		boolean loginOK = false;
+		BankService bankService = BankService.getInstance();
+		
 		while (true) {
 			System.out.println("=================GroupBankPractice=================");
 			if (!loginOK) {
@@ -19,8 +22,10 @@ public class BankMain {
 					if(!loginOk) {
 						service.save();
 					}else {
-						
+						service.
+						service.accountfind;
 					}
+					
 
 				} else if (menu == 2) {
 					if(!loginOk) {

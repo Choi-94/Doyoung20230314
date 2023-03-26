@@ -20,11 +20,11 @@ public class CounselingService {
 	public void Counselingsave() {
 		CounselingDTO counselingDTO = new CounselingDTO();
 		System.out.print("상담 받으실 성함을 입력하세요> ");
-		counselingDTO.setName(sc.next());
+		counselingDTO.setName(sc.nextLine());
 		System.out.print("연락 받으실 휴대폰 번호를 입력하세요>  ex)010-0000-0000 ");
-		counselingDTO.setPhone(sc.next());
+		counselingDTO.setPhone(sc.nextLine());
 		System.out.println("원하시는 날짜와 시간을 적어주세요>  ex)00월00일 00시");
-		counselingDTO.setDate(sc.next());
+		counselingDTO.setDate(sc.nextLine());
 		boolean success = Corepository.save(counselingDTO);
 		if(success) {
 			System.out.println("감사합니다 원하시는 시간에 상담연락 드리겠습니다");

@@ -21,19 +21,16 @@ public class Ex04_updown {
 			a++;
 			System.out.println("정답을 입력해주세요");
 			int num = sc.nextInt();
-			if(a==10) {
+			if (a == 10) {
 				System.out.println("정답입니다");
 				break;
 			}
 			if (a < 10) {
-
 				if (num > answer) {
 					System.out.println("DOWN");
-					
 					continue;
 				} else if (num < answer) {
 					System.out.println("up");
-					
 					continue;
 				} else {
 					System.out.println("정답입니다");
@@ -46,15 +43,11 @@ public class Ex04_updown {
 					} else if (a < 10) {
 						System.out.println("normal");
 					}
-
 				}
-
-			
 			}
 		}
 	}
 }
-
 //if (a == 10) {
 //System.out.println("game over");
 //break;    --<이걸 위에다가 주면 10번째 정답이 안됨
